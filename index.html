@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+    <style>
+        body {
+            background-color: beige;
+        }
+        main {
+            display: flex;
+            flex-direction: column;
+        }
+        h1, form {
+            align-self: center;
+            margin: 20px;
+        }
+        h1 {
+            font-family: 'Bebas Neue';
+            font-size: 60px;
+        }
+
+        .round {
+            border-radius: 10px;
+        }
+        .shaded {
+            box-shadow: 5px 5px 10px gray;
+        }
+        .transparent {
+            opacity: 0;
+        }
+
+        #mainCard {
+            margin-top: 150px;
+            align-self: center;
+            display: flex;
+            flex-direction: column;
+            background-color: white;
+        }
+        #top {
+            -webkit-app-region: drag;
+            width: 100%;
+            height: 22px;
+        }
+        #submit-button {
+            background-color: #a5a57f;
+            box-shadow: 2px 2px 2px grey;
+            color: black;
+            border-radius: 5px;
+            border: none;
+        }
+        #URL {
+            border-radius: 5px;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            #mainCard {
+                background-color: rgb(30, 30, 50);
+                color: white;
+            }
+            #submit-button {
+                background-color: rgb(30, 30, 90);
+                box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.50);
+                color: white;
+            }
+            body {
+                background-color: rgb(15, 15, 25);
+            }
+            .shaded {
+                box-shadow: 5px 5px 10px black;
+            }
+        }
+
+        /* The switch - the box around the slider */
+        .switch {
+            position: absolute;
+            bottom: 10px;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+
+        /* Hide default HTML checkbox */
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        /* The slider */
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgb(15, 15, 25);
+            -webkit-transition: .4s;
+            transition: .4s;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            -webkit-transition: .4s;
+            transition: .4s;
+        }
+
+        input:checked + .slider {
+            background-color: beige;
+        }
+
+        input:focus + .slider {
+            box-shadow: 0 0 1px beige;
+        }
+
+        input:checked + .slider:before {
+            -webkit-transform: translateX(26px);
+            -ms-transform: translateX(26px);
+            transform: translateX(26px);
+            background-color: rgb(30, 30, 50);
+        }
+
+        /* Rounded sliders */
+        .slider.round {
+            border-radius: 34px;
+        }
+
+        .slider.round:before {
+            border-radius: 50%;
+        } 
+    </style>
+
+    <head>
+        <link href="https://fonts.googleapis.com/css?family=Bebas%20Neue" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Josefin%20Sans" rel="stylesheet">
+        <title>YT-DL</title>
+    </head>
+
+    <body>
+        <div id="top"></div>
+
+        <main>
+            <div id="mainCard" class="round shaded">
+                <h1>YT-DL</h1>
+                <form name="urlForm" onsubmit="sendURL()">
+                    <input type="text" placeholder="YouTube URL" name="URL" id="URL"></input>
+                    <input type="submit" value="Submit" id="submit-button"></input>
+                </form>
+            </div>
+        </main>
+
+        <label class="switch">
+            <button id="darkmode-toggle"></button>
+            <input type="checkbox" id="switch-checkbox">
+            <span class="slider round"></span>
+        </label>
+
+        <script src='./renderFile.js'></script>
+    </body>
+</html>
